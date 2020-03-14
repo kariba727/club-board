@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <h1>投稿詳細ページ</h1>
+      <h3 class="text-center">--<%= @post.user.email %>さんの投稿--</h3>
+      <div class="border border-secondary rounded-lg pt-2 mb-3">
+        <div class="container-fluid">
+          <div class="row align-items-start">
+            <div class="col">
+              <img src="/nezumi.jpg" alt="画像" class="container-fluid">
+            </div>
+            <div class="col">
+
+              <div class>
+                <h5>部活・サークル名</h5>
+                <div class="text-center"><%= @post.name %></div>
+              </div>
+
+              <div class>
+                <h5>ジャンル</h5>
+                <div class="text-center"><%= @post.genre %></div>
+              </div>
+
+              <div class>
+                <h5>学校</h5>
+                <div class="text-center"><%= @post.school %></div>
+              </div>
+
+              <div class>
+                <h5>人数</h5>
+                <div class="text-center"><%= @post.people %>人</div>
+              </div>
+
+              <div class>
+                <h5>活動頻度</h5>
+                <div class="text-center"><%= @post.activeday %></div>
+              </div>
+
+              <div class>
+                <h5>詳細</h5>
+                <div class="text-center"><%= @post.details %></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="text-right">
+          <% if @post.user_id == current_user.id %>
+          <%= link_to '編集', edit_post_path(@post), class: "btn btn-outline-info" %>
+          <%= link_to "削除", "/posts/#{@post.id}/destroy", class: "btn btn-outline-info", method: "post", data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"}%>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="form-inline">
+          <% if current_user.already_liked?(@post) %>
+          <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete, class: "btn btn-outline-danger mr-4 mb-2" %>
+          <% else %>
+          <%= button_to 'いいね', post_likes_path(@post), class: "btn btn-outline-primary mr-4 mb-2" %>
+          <% end %>
+          <h4>いいね件数: <%= @post.likes.count %></h4>
+        </div>
+      </div>
+<hr>
+      <h4>いいねしたユーザー</h4>
+
+      <% @post.liked_users.each do |user| %>
+      <li class='mb-5'><%= user.email %></li>
+      <% end %>
+    </div>
+
+
+  </div>
+
+</div>
+<div class="col-md-1">
+
+</div>
+</div>

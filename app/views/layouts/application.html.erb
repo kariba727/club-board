@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light top-key ">
+      <!-- fixed-top -->
+      <div class="container">
+        <a class="navbar-brand text-white" href="/">ホーム！！
+          <span class="sr-only">(current)</span>
+        </a>
+
+        <%= search_form_for @q do |f| %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder:"検索してね"%>
+        <% end %>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto ">
+
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/posts">投稿一覧</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/posts/new">投稿する</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/users/edit">プロフィール変更</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/users/<%= current_user.id %>">マイページ</a>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/posts">投稿一覧</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/users/sign_up">新規登録</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white an" href="/users/sign_in">ログイン</a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+    <%= yield %>
+  </body>
+</html>

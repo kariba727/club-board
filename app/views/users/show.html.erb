@@ -1,0 +1,21 @@
+<h1>ユーザー詳細ページ</h1>
+<h3><%= @user.email %></h3>
+<%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+<h2>投稿内容</h2>
+
+<% @user.posts.each do |post| %>
+  <p><a href="/posts/<%= post.id %>"><%= post.name %></a>
+
+    </p>
+  <td>
+  </td>
+<% end %>
+
+
+
+<h3>いいねしている投稿</h3>
+<% @user.liked_posts.each do |post| %>
+  <%= post.user.email %>
+  <%= post.details %>
+<% end %>
+<%= link_to "ユーザー一覧へ", users_path %>

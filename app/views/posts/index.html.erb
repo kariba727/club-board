@@ -1,0 +1,58 @@
+<% if user_signed_in? %>
+
+<%= link_to "ユーザー一覧へ", users_path %>
+
+<hr>
+<div class="container">
+  <h2 class="text-center">投稿一覧</h2>
+  
+  <div class="row">
+
+    <% @posts.each do |post| %>
+      <div class="col-sm-3 pb-3">
+        <a href="/posts/<%= post.id %>" class ="atext-color">
+        <div class="card" href="/posts/<%= post.id %>" >
+          <img class="card-img-top" src="nezumi.jpg" alt="画像">
+           <div class="card-body" >
+              <div class="card-title"><%= post.name %>
+             <i class="fa fa-thumbs-up" aria-hidden="true"></i>：<%= post.liked_users.count %>
+              </div>
+              <p class="card-text"><%= post.school %></p>
+          </div>
+       </div>
+       </a>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+
+  <%= link_to "ユーザー一覧へ", users_path %>
+
+  <hr>
+  <div class="container">
+    <h2 class="text-center">投稿一覧</h2>
+
+    <div class="row">
+
+      <% @posts.each do |post| %>
+        <div class="col-sm-3 pb-3">
+          <a href="/posts/<%= post.id %>" class ="atext-color">
+          <div class="card" href="/posts/<%= post.id %>" >
+            <img class="card-img-top" src="nezumi.jpg" alt="画像">
+             <div class="card-body" >
+                <div class="card-title"><%= post.name %>
+               <i class="fa fa-thumbs-up" aria-hidden="true"></i>：<%= post.liked_users.count %>
+                </div>
+                <p class="card-text"><%= post.school %></p>
+            </div>
+         </div>
+         </a>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
