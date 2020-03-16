@@ -57,8 +57,14 @@
       </small>
     </div>
 
-         <%= f.submit '投稿', class: 'btn btn-info btn-block mb-4' %>
-        <% end %>
+    <div class="form-group mt-3">
+      <%= f.label :画像 %><br />
+      <%= f.file_field :img, class: "image" %>
+      <p><%= f.check_box :remove_img %>画像を削除する</p>
+    </div>
+
+     <%= f.submit '投稿', class: 'btn btn-info btn-block mb-4' %>
+     <% end %>
 
     </div>
     <div class="col-md-1">

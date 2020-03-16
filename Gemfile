@@ -54,3 +54,4 @@ gem 'bootstrap', '4.3.1'
 gem 'jquery-rails', '4.3.1'
 gem "font-awesome-rails"
 gem 'ransack'
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'

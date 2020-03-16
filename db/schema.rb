@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200216092012) do
+ActiveRecord::Schema.define(version: 20200316214507) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20200216092012) do
     t.string "hi"
     t.string "activeday"
     t.integer "details"
+    t.string "img"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
