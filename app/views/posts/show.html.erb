@@ -6,44 +6,45 @@
     <div class="col-md-10">
       <h1>投稿詳細ページ</h1>
       <h3 class="text-center">--<%= @post.user.email %>さんの投稿--</h3>
-      <div class="border border-secondary rounded-lg pt-2 mb-3">
+      <div class= "pt-2 mb-3">
         <div class="container-fluid">
           <div class="row align-items-start">
             <div class="col">
-              <img src="/nezumi.jpg" alt="画像" class="container-fluid">
+              <% if @post.img.present? %>
+                <%= image_tag @post.img.url(:thumb), style:'width: 100%' %>
+              <% else %>
+                <img  src="/nezumi.jpg" alt="画像" class="container-fluid">
+               <% end %>
             </div>
-            <div class="col">
-
-              <div class>
-                <h5>部活・サークル名</h5>
-                <div class="text-center"><%= @post.name %></div>
-              </div>
-
-              <div class>
-                <h5>ジャンル</h5>
-                <div class="text-center"><%= @post.genre %></div>
-              </div>
-
-              <div class>
-                <h5>学校</h5>
-                <div class="text-center"><%= @post.school %></div>
-              </div>
-
-              <div class>
-                <h5>人数</h5>
-                <div class="text-center"><%= @post.people %>人</div>
-              </div>
-
-              <div class>
-                <h5>活動頻度</h5>
-                <div class="text-center"><%= @post.activeday %></div>
-              </div>
-
-              <div class>
-                <h5>詳細</h5>
-                <div class="text-center"><%= @post.details %></div>
-              </div>
-
+            <div class="col pt-3 pb-3">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">部活・サークル名</th>
+                    <td><%= @post.name %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">学校</th>
+                    <td><%= @post.school %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">人数</th>
+                    <td><%= @post.people %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">活動頻度</th>
+                    <td><%= @post.activeday %></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">詳細</th>
+                    <td><%= @post.details %></td>
+                  </tr>
+                </tbody>
+              </table>              
             </div>
           </div>
         </div>
@@ -64,7 +65,7 @@
           <% else %>
           <%= button_to 'いいね', post_likes_path(@post), class: "btn btn-outline-primary mr-4 mb-2" %>
           <% end %>
-          <h4>いいね件数: <%= @post.likes.count %></h4>
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>： <%= @post.likes.count %>
         </div>
       </div>
 <hr>

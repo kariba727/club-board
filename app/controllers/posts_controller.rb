@@ -23,11 +23,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to :action => "index"
-    else
-      redirect_to :action => "new"
-    end
+      if @post.save
+       redirect_to :action => "index"
+      else
+       redirect_to :action => "new"
+      end
+    
   end
 
 
@@ -49,6 +50,7 @@ class PostsController < ApplicationController
           redirect_to posts_path
   end
 
+  
 
   private
   def post_params

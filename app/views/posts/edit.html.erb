@@ -20,16 +20,6 @@
         </small>
       </div>
 
-      <div class="mt-3">
-        <%= f.label :genre, 'ジャンル' %>
-        <p>
-          <label><%= f.radio_button :genre, "運動系" %> 運動系 </label>
-          <label><%= f.radio_button :genre, "文化系", class: 'ml-2' %> 文化系</label>
-          <small id="genre-tip" class="form-text text-muted">
-            ジャンルを選択してください
-          </small></p>
-        </div>
-
         <div class="form-group mt-3">
           <%= f.label :school, '学校' %>
           <%= f.text_field :school, class: 'form-control'  %>

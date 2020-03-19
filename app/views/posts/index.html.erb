@@ -11,7 +11,11 @@
         <a href="/posts/<%= post.id %>" class ="atext-color">
         <div class="card" href="/posts/<%= post.id %>" >
           <div class="card-img-top">
-          <%= image_tag post.img.url if post.img?%>
+          <% if post.img.present? %>
+            <%= image_tag post.img.url(:index) %>
+          <% else %>
+            <img class="card-img-top" src="nezumi.jpg" alt="画像" >
+          <% end %>
           </div>
            <div class="card-body" >
               <div class="card-title"><%= post.name %>
